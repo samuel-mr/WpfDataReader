@@ -1,4 +1,4 @@
-﻿namespace WebDataReader.Application.Sunat
+﻿namespace WebDataReader.Application.Sunat.GetTipoCambio
 {
   public class GetTipoCambioParams
   {

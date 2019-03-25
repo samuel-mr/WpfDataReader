@@ -1,12 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using WebDataReader.Application.Interfaces;
 using WebDataReader.Domain;
 
-namespace WebDataReader.Application.Sunat
+namespace WebDataReader.Application.Sunat.GetTipoCambio
 {
   public class GetTipoCambioHandler
   {

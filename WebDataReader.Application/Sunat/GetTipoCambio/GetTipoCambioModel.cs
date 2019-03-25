@@ -1,6 +1,6 @@
 ﻿using WebDataReader.Domain;
 
-namespace WebDataReader.Application.Sunat
+namespace WebDataReader.Application.Sunat.GetTipoCambio
 {
   public class GetTipoCambioModel
   {

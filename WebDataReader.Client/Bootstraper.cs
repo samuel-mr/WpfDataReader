@@ -7,6 +7,8 @@ using Autofac;
 using Autofac.Core;
 using WebDataReader.Application.Interfaces;
 using WebDataReader.Application.Sunat;
+using WebDataReader.Application.Sunat.GetTipoCambio;
+using WebDataReader.Client.Views.Sunat;
 using WebDataReader.Infraestructure;
 
 namespace WebDataReader.Client
@@ -23,6 +25,9 @@ namespace WebDataReader.Client
       var builder = new ContainerBuilder();
       builder.RegisterType<MainWindow>().AsSelf();
       builder.RegisterType<MainWindowViewModel>().AsSelf();
+      builder.RegisterType<SunatReportViewModel>().AsSelf();
+      builder.RegisterType<SunatWorkerViewModel>().AsSelf();
+
       builder.RegisterType<WebHtmlReader>().As<IHtmlReader>();
 
       // Commands

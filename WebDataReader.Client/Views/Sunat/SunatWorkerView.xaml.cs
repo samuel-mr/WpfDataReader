@@ -13,21 +13,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace WebDataReader.Client
+namespace WebDataReader.Client.Views.Sunat
 {
   /// <summary>
-  /// Lógica de interacción para MainWindow.xaml
+  /// Lógica de interacción para SunatWorkerView.xaml
   /// </summary>
-  public partial class MainWindow : Window //MahApps.Metro.Controls.MetroWindow
+  public partial class SunatWorkerView : UserControl
   {
-    private MainWindowViewModel context;
-    public MainWindow(MainWindowViewModel vm)
+    public SunatWorkerView()
     {
       InitializeComponent();
-      context = vm;
-      DataContext = vm;
-      Loaded += (e, s) => { };
     }
-
   }
 }
