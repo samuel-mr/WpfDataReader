@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using WebDataReader.Domain;
 using WebDataReader.Domain.ValueObjects;
+using WebDataReader.Domain.ValueObjects.WebReader;
 using WebDataReader.Infraestructure;
 using Xunit;
 

@@ -41,11 +41,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="TransformTemplate.cs" />
     <Compile Include="Util\HtmlUtil.cs" />
-    <Compile Include="ValueObjects\MyColumn.cs" />
-    <Compile Include="ValueObjects\MyHtml.cs" />
-    <Compile Include="ValueObjects\MyRow.cs" />
-    <Compile Include="ValueObjects\MyTable.cs" />
+    <Compile Include="ValueObjects\Transform\ColumnMetadata.cs" />
+    <Compile Include="ValueObjects\WebReader\MyColumn.cs" />
+    <Compile Include="ValueObjects\WebReader\MyHtml.cs" />
+    <Compile Include="ValueObjects\WebReader\MyRow.cs" />
+    <Compile Include="ValueObjects\WebReader\MyTable.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SunatExtracter.cs" />
   </ItemGroup>

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -29,5 +30,20 @@ namespace WebDataReader.Client
       Loaded += (e, s) => { };
     }
 
+    protected override void OnClosing(CancelEventArgs e)
+    {
+      try
+      {
+        if (context == null) return;
+
+        context.TransformViewModel.OnClosing();
+      }
+      catch (Exception ex)
+      {
+       
+       // Messenger.Default.Send(new FooterErrorMessage(ex));
+      }
+      base.OnClosing(e);
+    }
   }
 }

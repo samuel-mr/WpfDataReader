@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Xunit;
 using WebDataReader.Domain;
 using WebDataReader.Domain.ValueObjects;
+using WebDataReader.Domain.ValueObjects.WebReader;
 using WebDataReader.Infraestructure;
 
 namespace WebDataReader.DomainTest

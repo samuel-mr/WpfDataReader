@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace WebDataReader.Domain.ValueObjects
+namespace WebDataReader.Domain.ValueObjects.WebReader
 {
   public class MyTables : List<MyTable>
   {

@@ -8,6 +8,7 @@ using Prism.Mvvm;
 using WebDataReader.Application.Interfaces;
 using WebDataReader.Application.Sunat;
 using WebDataReader.Client.Views.Sunat;
+using WebDataReader.Client.Views.Transform;
 using WebDataReader.Domain;
 using WebDataReader.Domain.ValueObjects;
 
@@ -20,6 +21,7 @@ namespace WebDataReader.Client
       App.Log.Trace("Starting");
       SunatWorkerViewModel = Bootstraper.Resolve<SunatWorkerViewModel>();
       SunatReportViewModel = Bootstraper.Resolve<SunatReportViewModel>();
+      TransformViewModel = Bootstraper.Resolve<TransformViewModel>();
     }
 
     private SunatWorkerViewModel sunatWorkerViewModel;
@@ -45,6 +47,18 @@ namespace WebDataReader.Client
         RaisePropertyChanged(nameof(SunatReportViewModel));
       }
     }
+    private TransformViewModel transformViewModel;
+    public TransformViewModel TransformViewModel
+    {
+      get => transformViewModel;
+      set
+      {
+        if (transformViewModel == value) return;
+        transformViewModel = value;
+        RaisePropertyChanged(nameof(TransformViewModel));
+      }
+    }
+	
 
   }
 }

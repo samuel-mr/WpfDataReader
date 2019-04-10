@@ -42,10 +42,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Interfaces\IHtmlReader.cs" />
+    <Compile Include="Interfaces\IImplementedConsumMetadata.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sunat\GetTipoCambio\GetTipoCambioHandler.cs" />
     <Compile Include="Sunat\GetTipoCambio\GetTipoCambioModel.cs" />
     <Compile Include="Sunat\GetTipoCambio\GetTipoCambioParams.cs" />
+    <Compile Include="Transform\GetTransformed\GetTransformedHandler.cs" />
+    <Compile Include="Transform\GetTransformed\GetTransformedModel.cs" />
+    <Compile Include="Transform\GetTransformed\GetTransformedParams.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\WebDataReader.Domain\WebDataReader.Domain.csproj">

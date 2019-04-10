@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using WebDataReader.Domain.ValueObjects;
+using WebDataReader.Domain.ValueObjects.WebReader;
 
 namespace WebDataReader.Domain
 {

@@ -6,11 +6,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{AF9F9191-37A5-45D3-90B0-4F24CA3134AD}</ProjectGuid>
+    <ProjectGuid>{BB61A4BF-743C-4311-B13B-5E0546CD21D7}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>WebDataReader.DomainTest</RootNamespace>
-    <AssemblyName>WebDataReader.DomainTest</AssemblyName>
+    <RootNamespace>WebDataReader.PersistenceTest</RootNamespace>
+    <AssemblyName>WebDataReader.PersistenceTest</AssemblyName>
     <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -35,10 +35,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="FluentAssertions, Version=5.6.0.0, Culture=neutral, PublicKeyToken=33f2691a05b67b6a, processorArchitecture=MSIL">
       <HintPath>..\packages\FluentAssertions.5.6.0\lib\net45\FluentAssertions.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.ValueTuple, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.ValueTuple.4.4.0\lib\net461\System.ValueTuple.dll</HintPath>
@@ -63,28 +70,25 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DataExtracterTest.cs" />
-    <Compile Include="HtmlUltilTest.cs" />
-    <Compile Include="MyHtmlTest.cs" />
+    <Compile Include="ConsultaGenericaTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SunatExtracterTest.cs" />
-    <Compile Include="TransformTemplateTest.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Analyzer Include="..\packages\xunit.analyzers.0.10.0\analyzers\dotnet\cs\xunit.analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\WebDataReader.Domain\WebDataReader.Domain.csproj">
       <Project>{b2c4c7d5-84aa-4ee0-83c0-f274f36c2279}</Project>
       <Name>WebDataReader.Domain</Name>
     </ProjectReference>
-    <ProjectReference Include="..\WebDataReader.Infraestructure\WebDataReader.Infraestructure.csproj">
-      <Project>{7a9f752d-7fe5-432b-98da-5ea2924c00b8}</Project>
-      <Name>WebDataReader.Infraestructure</Name>
+    <ProjectReference Include="..\WebDataReader.Persistence\WebDataReader.Persistence.csproj">
+      <Project>{14020397-a91a-4c87-a69f-9dfc351db241}</Project>
+      <Name>WebDataReader.Persistence</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Analyzer Include="..\packages\xunit.analyzers.0.10.0\analyzers\dotnet\cs\xunit.analyzers.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

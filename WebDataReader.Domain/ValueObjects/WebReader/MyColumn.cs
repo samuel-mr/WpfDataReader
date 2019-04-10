@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using WebDataReader.Domain.Util;
 
-namespace WebDataReader.Domain.ValueObjects
+namespace WebDataReader.Domain.ValueObjects.WebReader
 {
   public class MyColumns : List<MyColumn> { }
 
