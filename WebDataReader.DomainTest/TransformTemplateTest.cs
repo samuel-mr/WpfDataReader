@@ -16,7 +16,7 @@ namespace WebDataReader.DomainTest
     public void TransfornLine_SimpleTest()
     {
       string template = "public {{Type}} {{Name}} { get; set; }";
-      var result = new TransformTemplate().TransformLine(template, new ColumnMetadata() { ColumnName  = "Nombre", DataType = "String"});
+      var result = new TransformTemplate().TransformLine(template, new ColumnMetadata() { ColumnName = "Nombre", DataType = "String" });
       result.Should().Be(@"public String Nombre { get; set; }");
     }
 
@@ -24,7 +24,7 @@ namespace WebDataReader.DomainTest
     public void Nullable_String_TransfornLine_SimpleTest()
     {
       string template = "public {{Type}} {{Name}} { get; set; }";
-      var result = new TransformTemplate().TransformLine(template, new ColumnMetadata() { ColumnName = "Nombre", DataType = "String", AllowDbNull = true});
+      var result = new TransformTemplate().TransformLine(template, new ColumnMetadata() { ColumnName = "Nombre", DataType = "String", AllowDbNull = true });
       result.Should().Be(@"public String Nombre { get; set; }");
     }
     [Fact]
@@ -47,6 +47,33 @@ namespace WebDataReader.DomainTest
       result.Should().Be(@"public string Nombre { get; set; }
 public int Cantidad { get; set; }
 ");
+    }
+
+    [Fact]
+    public void IsRequired_Demo1_Test()
+    {
+      string template = "{{IsRequired?hola::mundo}}";
+      var result = new TransformTemplate().ExtractSingle_Is(template, new ColumnMetadata()
+      {
+        ColumnName = "Nombre",
+        DataType = "string",
+        AllowDbNull = false
+      });
+
+      result.Should().Be(@"hola");
+    }
+    [Fact]
+    public void IsNotRequired_Demo1_Test()
+    {
+      string template = "{{IsRequired?hola::mundo}}";
+      var result = new TransformTemplate().ExtractSingle_Is(template, new ColumnMetadata()
+      {
+        ColumnName = "Nombre",
+        DataType = "string",
+        AllowDbNull = true
+      });
+
+      result.Should().Be(@"mundo");
     }
   }
 }

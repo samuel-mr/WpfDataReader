@@ -47,6 +47,9 @@
     <Compile Include="Sunat\GetTipoCambio\GetTipoCambioHandler.cs" />
     <Compile Include="Sunat\GetTipoCambio\GetTipoCambioModel.cs" />
     <Compile Include="Sunat\GetTipoCambio\GetTipoCambioParams.cs" />
+    <Compile Include="Transform\GetDomains\GetDomainsHandler.cs" />
+    <Compile Include="Transform\GetDomains\GetDomainsModel.cs" />
+    <Compile Include="Transform\GetDomains\GetDomainsParams.cs" />
     <Compile Include="Transform\GetTransformed\GetTransformedHandler.cs" />
     <Compile Include="Transform\GetTransformed\GetTransformedModel.cs" />
     <Compile Include="Transform\GetTransformed\GetTransformedParams.cs" />

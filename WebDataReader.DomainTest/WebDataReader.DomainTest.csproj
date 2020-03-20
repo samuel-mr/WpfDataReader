@@ -64,6 +64,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataExtracterTest.cs" />
+    <Compile Include="DomainExtracterTest.cs" />
     <Compile Include="HtmlUltilTest.cs" />
     <Compile Include="MyHtmlTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

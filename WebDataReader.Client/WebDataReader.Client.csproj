@@ -14,6 +14,21 @@
     <WarningLevel>4</WarningLevel>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -33,6 +48,9 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>icono.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Autofac, Version=4.9.1.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
@@ -95,6 +113,10 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Constantes.cs" />
+    <Compile Include="Views\Paginas\ExtractDomainsView.xaml.cs">
+      <DependentUpon>ExtractDomainsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Paginas\ExtractDomainsViewModel.cs" />
     <Compile Include="Views\Sunat\ProcedimientoState.cs" />
     <Compile Include="Views\Sunat\SunatReportView.xaml.cs">
       <DependentUpon>SunatReportView.xaml</DependentUpon>
@@ -104,6 +126,10 @@
       <DependentUpon>SunatWorkerView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Sunat\SunatWorkerViewModel.cs" />
+    <Compile Include="Views\Transform\AddConnectionView.xaml.cs">
+      <DependentUpon>AddConnectionView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Transform\AddConnectionViewModel.cs" />
     <Compile Include="Views\Transform\AddTemplateView.xaml.cs">
       <DependentUpon>AddTemplateView.xaml</DependentUpon>
     </Compile>
@@ -130,6 +156,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\Paginas\ExtractDomainsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Sunat\SunatReportView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -137,6 +167,10 @@
     <Page Include="Views\Sunat\SunatWorkerView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Transform\AddConnectionView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Transform\AddTemplateView.xaml">
       <SubType>Designer</SubType>
@@ -166,6 +200,8 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <Resource Include="icon.ico" />
+    <Resource Include="icono.ico" />
     <Content Include="NLog.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -179,7 +215,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\WebDataReader.Application\WebDataReader.Application.csproj">
@@ -198,6 +236,18 @@
       <Project>{14020397-a91a-4c87-a69f-9dfc351db241}</Project>
       <Name>WebDataReader.Persistence</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.6.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.6.2 %28x86 y x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

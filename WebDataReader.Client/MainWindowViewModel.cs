@@ -7,6 +7,7 @@ using Prism.Commands;
 using Prism.Mvvm;
 using WebDataReader.Application.Interfaces;
 using WebDataReader.Application.Sunat;
+using WebDataReader.Client.Views.Paginas;
 using WebDataReader.Client.Views.Sunat;
 using WebDataReader.Client.Views.Transform;
 using WebDataReader.Domain;
@@ -19,9 +20,11 @@ namespace WebDataReader.Client
     public MainWindowViewModel()
     {
       App.Log.Trace("Starting");
+      
       SunatWorkerViewModel = Bootstraper.Resolve<SunatWorkerViewModel>();
       SunatReportViewModel = Bootstraper.Resolve<SunatReportViewModel>();
       TransformViewModel = Bootstraper.Resolve<TransformViewModel>();
+      ExtractDomainsViewModel = Bootstraper.Resolve<ExtractDomainsViewModel>();
     }
 
     private SunatWorkerViewModel sunatWorkerViewModel;
@@ -58,7 +61,17 @@ namespace WebDataReader.Client
         RaisePropertyChanged(nameof(TransformViewModel));
       }
     }
-	
+    private ExtractDomainsViewModel _extractDomainsViewModel;
+    public ExtractDomainsViewModel ExtractDomainsViewModel
+    {
+      get => _extractDomainsViewModel;
+      set
+      {
+        if (_extractDomainsViewModel == value) return;
+        _extractDomainsViewModel = value;
+        RaisePropertyChanged(nameof(ExtractDomainsViewModel));
+      }
+    }
 
   }
 }

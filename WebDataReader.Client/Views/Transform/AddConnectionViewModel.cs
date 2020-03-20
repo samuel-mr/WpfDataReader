@@ -6,7 +6,7 @@ using Prism.Mvvm;
 
 namespace WebDataReader.Client.Views.Transform
 {
-  public class AddTemplateViewModel : BindableBase
+  public class AddConnectionViewModel : BindableBase
   {
     private string name;
     public string Name

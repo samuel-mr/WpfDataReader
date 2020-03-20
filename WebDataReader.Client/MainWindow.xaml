@@ -5,28 +5,32 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WebDataReader.Client"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        xmlns:Sunat="clr-namespace:WebDataReader.Client.Views.Sunat" xmlns:Transform="clr-namespace:WebDataReader.Client.Views.Transform" x:Class="WebDataReader.Client.MainWindow"
+        xmlns:Sunat="clr-namespace:WebDataReader.Client.Views.Sunat" 
+        xmlns:Transform="clr-namespace:WebDataReader.Client.Views.Transform" xmlns:Paginas="clr-namespace:WebDataReader.Client.Views.Paginas" x:Class="WebDataReader.Client.MainWindow"
         FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto"
         Background="{DynamicResource MaterialDesignPaper}"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         TextElement.FontSize="12"
         mc:Ignorable="d"
-        Title="{Binding Titulo}" Height="344" Width="596">
-    <materialDesign:DialogHost Identifier="RootDialog" SnackbarMessageQueue="{Binding ElementName=MainSnackbar, Path=MessageQueue}">
-        <materialDesign:DrawerHost IsLeftDrawerOpen="{Binding ElementName=MenuToggleButton, Path=IsChecked}">
-    <Grid>
-        <TabControl TabStripPlacement="Left" Style="{DynamicResource TabControlStyle1}">
-            <TabItem Header="Worker" FontSize="14" Style="{DynamicResource TabItemStyle1}">
-                <Sunat:SunatWorkerView DataContext="{Binding SunatWorkerViewModel}"/>
-            </TabItem>
-            <TabItem Header="Informacion" FontSize="14" Style="{DynamicResource TabItemStyle1}">
-                <Sunat:SunatReportView DataContext="{Binding SunatReportViewModel}"/>
-            </TabItem>
-            <TabItem Header="Transformar" FontSize="14" Style="{DynamicResource TabItemStyle1}">
-                <Transform:TransformView DataContext="{Binding TransformViewModel}" />
-            </TabItem>
-        </TabControl>
-    </Grid>
+        Title="Toolkit" Height="344" Width="596">
+    <materialDesign:DialogHost Identifier="RootDialog" SnackbarMessageQueue="{Binding MessageQueue, ElementName=MainSnackbar}">
+        <materialDesign:DrawerHost IsLeftDrawerOpen="{Binding IsChecked, ElementName=MenuToggleButton}">
+            <Grid>
+                <TabControl TabStripPlacement="Left" Style="{DynamicResource TabControlStyle1}">
+                    <TabItem Header="Worker" FontSize="14" Style="{DynamicResource TabItemStyle1}">
+                        <Sunat:SunatWorkerView DataContext="{Binding SunatWorkerViewModel}"/>
+                    </TabItem>
+                    <TabItem Header="Informacion" FontSize="14" Style="{DynamicResource TabItemStyle1}">
+                        <Sunat:SunatReportView DataContext="{Binding SunatReportViewModel}"/>
+                    </TabItem>
+                    <TabItem Header="Transformar" FontSize="14" Style="{DynamicResource TabItemStyle1}">
+                        <Transform:TransformView DataContext="{Binding TransformViewModel}" />
+                    </TabItem>
+                    <TabItem Header="Dominios" FontSize="14" Style="{DynamicResource TabItemStyle1}">
+                        <Paginas:ExtractDomainsView  DataContext="{Binding ExtractDomainsViewModel}"  />
+                    </TabItem>
+                </TabControl>
+            </Grid>
 
         </materialDesign:DrawerHost>
     </materialDesign:DialogHost>

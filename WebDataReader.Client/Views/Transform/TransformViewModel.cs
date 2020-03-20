@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
@@ -17,25 +18,70 @@ namespace WebDataReader.Client.Views.Transform
   public class TransformViewModel : BindableBase
   {
     private readonly IImplementedConsumMetadata _implementedConsumMetadata;
-
-    private TransformViewModel()
-    {
-      LoadCache();
-      // Template = "public {{Type}} {{Name}} { get; set; }";
-      ConnectionString =
+    
+      /*
+       Template = "public {{Type}} {{Name}} { get; set; }";
+        ConnectionString =
         @"Data Source=DESKTOP-901LI9F\SQL2017DEV;Initial Catalog=DemoCopia;User ID=sa;Password=Pa$$123";
-      Query = @"SELECT TOP (1000) [UsuarioId]
-      ,[Nombre]
-      ,[Password]
-  FROM [DemoCopia].[dbo].[Usuario] where Nombre='f'";
-    }
+       Query = @"SELECT TOP (1000) [UsuarioId]
+       ,[Nombre]
+       ,[Password]
+   FROM [DemoCopia].[dbo].[Usuario] where Nombre='f'";
+   */
+    
 
-    public TransformViewModel(IImplementedConsumMetadata implementedConsumMetadata) : this()
+    public TransformViewModel(IImplementedConsumMetadata implementedConsumMetadata) 
     {
+      Templates = new ObservableCollection<TemplatePair>();
+      Connections = new ObservableCollection<TemplatePair>();
       _implementedConsumMetadata = implementedConsumMetadata;
+      LoadCache();
     }
 
     public ICommand AddTemplateCommand => new DelegateCommand(async () => await AddTemplate());
+    public ICommand AddConnectionCommand => new DelegateCommand(async () => await AddConnection());
+    public ICommand DeleteConnectionCommand => new DelegateCommand(DeleteConnection);
+    public ICommand DeleteTemplateCommand => new DelegateCommand(() =>
+    {
+      if (TemplateSelected == null) return;
+      Templates.Remove(TemplateSelected);
+    });
+
+    private void DeleteConnection()
+    {
+      if (ConnectionSelected == null) return;
+      Connections.Remove(ConnectionSelected);
+    }
+
+    private async Task AddConnection()
+    {
+      var view = new AddConnectionView()
+      {
+        DataContext = new AddConnectionViewModel()
+      };
+      var result = await DialogHost.Show(view,
+        "RootDialog",
+        (sender, eventargs) => { },
+        (sender, eventargs) =>
+        {
+          if (!Equals(eventargs.Parameter, true)) return;
+
+          if (eventargs.Session?.Content is AddConnectionView connectionView)
+          {
+            if (connectionView.DataContext is AddConnectionViewModel vm)
+            {
+              if (string.IsNullOrWhiteSpace(vm.Name) || string.IsNullOrWhiteSpace(vm.Content))
+                return;
+              Connections.Add(new TemplatePair()
+              {
+                Guid = Guid.NewGuid(),
+                Nombre = vm.Name,
+                Plantilla = vm.Content
+              });
+            }
+          }
+        });
+    }
 
     async Task AddTemplate()
     {
@@ -43,9 +89,31 @@ namespace WebDataReader.Client.Views.Transform
       {
         DataContext = new AddTemplateViewModel()
       };
-      var result = await DialogHost.Show(view, "RootDialog", OpenedEventHandler, ClosingEventHandler);
-    }
+      var result = await DialogHost.Show(view,
+        "RootDialog",
+        (sender, eventargs) => { },
+        (sender, eventargs) =>
+          {
+            if (!Equals(eventargs.Parameter, true)) return;
 
+            if (eventargs.Session?.Content is AddTemplateView templateView)
+            {
+              if (templateView.DataContext is AddTemplateViewModel vm)
+              {
+                if (string.IsNullOrWhiteSpace(vm.Name) || string.IsNullOrWhiteSpace(vm.Content))
+                  return;
+
+                Templates.Add(new TemplatePair()
+                {
+                  Guid = Guid.NewGuid(),
+                  Nombre = vm.Name,
+                  Plantilla = vm.Content
+                });
+              }
+            }
+          });
+    }
+    /*
     private void ClosingEventHandler(object sender, DialogClosingEventArgs eventargs)
     {
       if (!Equals(eventargs.Parameter, true)) return;
@@ -64,25 +132,34 @@ namespace WebDataReader.Client.Views.Transform
           });
         }
       }
-    }
+    }*/
 
-    private void OpenedEventHandler(object sender, DialogOpenedEventArgs eventargs)
+
+
+    private ObservableCollection<TemplatePair> connections;
+    public ObservableCollection<TemplatePair> Connections
     {
-
-    }
-
-    private TemplatePair templateSelected;
-    public TemplatePair TemplateSelected
-    {
-      get => templateSelected;
+      get => connections;
       set
       {
-        if (templateSelected == value) return;
-        templateSelected = value;
-        RaisePropertyChanged(nameof(TemplateSelected));
+        if (connections == value) return;
+        connections = value;
+        RaisePropertyChanged(nameof(Connections));
+      }
+    }
+    private TemplatePair connectionSelected;
+    public TemplatePair ConnectionSelected
+    {
+      get => connectionSelected;
+      set
+      {
+        if (connectionSelected == value) return;
+        connectionSelected = value;
+        RaisePropertyChanged(nameof(ConnectionSelected));
         TransformSunatCommand.RaiseCanExecuteChanged();
       }
     }
+
 
     private ObservableCollection<TemplatePair> templates;
     public ObservableCollection<TemplatePair> Templates
@@ -95,17 +172,16 @@ namespace WebDataReader.Client.Views.Transform
         RaisePropertyChanged(nameof(Templates));
       }
     }
-
-
-    private string connectionString;
-    public string ConnectionString
+    private TemplatePair templateSelected;
+    public TemplatePair TemplateSelected
     {
-      get => connectionString;
+      get => templateSelected;
       set
       {
-        if (connectionString == value) return;
-        connectionString = value;
-        RaisePropertyChanged(nameof(ConnectionString));
+        if (templateSelected == value) return;
+        templateSelected = value;
+        RaisePropertyChanged(nameof(TemplateSelected));
+        TransformSunatCommand.RaiseCanExecuteChanged();
       }
     }
 
@@ -147,13 +223,13 @@ namespace WebDataReader.Client.Views.Transform
 
               var result = new GetTransformedHandler(_implementedConsumMetadata).Handle(new GetTransformedParams()
               {
-                ConnectionString = ConnectionString,
+                ConnectionString = ConnectionSelected.Plantilla,
                 Template = TemplateSelected.Plantilla,
                 Tsql = Query
               });
               Result = result.Transformed;
             },
-            () => TemplateSelected != null);
+            () => TemplateSelected != null && ConnectionSelected != null);
         }
         return
           _TransformSunatCommand;
@@ -195,7 +271,14 @@ namespace WebDataReader.Client.Views.Transform
     void SaveCache()
     {
       App.Log.Trace($"[Cerrando] Guardando configuracion");
-      var serializado = JsonConvert.SerializeObject(Templates, Newtonsoft.Json.Formatting.Indented);
+      var serializado = JsonConvert.SerializeObject(new TransformModelToSerialize()
+      {
+        Query = Query,
+        Plantillas = Templates,
+        Conexiones = Connections,
+        ConnectionSelected = ConnectionSelected?.Guid,
+        TemplateSelected = TemplateSelected?.Guid,
+      }, Newtonsoft.Json.Formatting.Indented);
       var newFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData, Environment.SpecialFolderOption.Create), Constantes.AppFolder);
       var newPath = Path.Combine(newFolder, Constantes.ConfigurationFileName);
       if (Directory.Exists(newFolder) == false)
@@ -210,9 +293,29 @@ namespace WebDataReader.Client.Views.Transform
       if (File.Exists(newPath) == false)
         return;
 
-      var serializado = File.ReadAllText(newPath);
-      var templates = JsonConvert.DeserializeObject<List<TemplatePair>>(serializado);
-      this.Templates = new ObservableCollection<TemplatePair>(templates);
+      var serialziedText = File.ReadAllText(newPath);
+      TransformModelToSerialize serializedObject = null;
+      try
+      {
+        serializedObject = JsonConvert.DeserializeObject<TransformModelToSerialize>(serialziedText);
+      }
+      catch (Exception e)
+      {
+        App.Log.Error(e);
+      }
+
+      if (serializedObject != null)
+      {
+        Query = serializedObject.Query;
+        Templates = new ObservableCollection<TemplatePair>(serializedObject.Plantillas);
+        Connections = new ObservableCollection<TemplatePair>(serializedObject.Conexiones);
+       
+        if (serializedObject.TemplateSelected.HasValue)
+          TemplateSelected = Templates.FirstOrDefault(x => x.Guid == serializedObject.TemplateSelected.Value);
+
+        if (serializedObject.ConnectionSelected.HasValue)
+          ConnectionSelected = Connections.FirstOrDefault(x => x.Guid == serializedObject.ConnectionSelected.Value);
+      }
     }
   }
 }

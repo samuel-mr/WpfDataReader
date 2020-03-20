@@ -8,6 +8,8 @@ using Autofac.Core;
 using WebDataReader.Application.Interfaces;
 using WebDataReader.Application.Sunat;
 using WebDataReader.Application.Sunat.GetTipoCambio;
+using WebDataReader.Application.Transform.GetDomains;
+using WebDataReader.Client.Views.Paginas;
 using WebDataReader.Client.Views.Sunat;
 using WebDataReader.Client.Views.Transform;
 using WebDataReader.Infraestructure;
@@ -30,12 +32,14 @@ namespace WebDataReader.Client
       builder.RegisterType<SunatReportViewModel>().AsSelf();
       builder.RegisterType<SunatWorkerViewModel>().AsSelf();
       builder.RegisterType<TransformViewModel>().AsSelf();
+      builder.RegisterType<ExtractDomainsViewModel>().AsSelf();
 
       builder.RegisterType<WebHtmlReader>().As<IHtmlReader>();
       builder.RegisterType<ImplementedConsumMetadata>().As<IImplementedConsumMetadata>();
 
       // Commands
       builder.RegisterType<GetTipoCambioHandler>().AsSelf();
+      builder.RegisterType<GetDomainsHandler>().AsSelf();
 
       _rootScope = builder.Build();
     }
