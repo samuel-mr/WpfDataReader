@@ -20,7 +20,7 @@ namespace WebDataReader.Client
     public MainWindowViewModel()
     {
       App.Log.Trace("Starting");
-      
+
       SunatWorkerViewModel = Bootstraper.Resolve<SunatWorkerViewModel>();
       SunatReportViewModel = Bootstraper.Resolve<SunatReportViewModel>();
       TransformViewModel = Bootstraper.Resolve<TransformViewModel>();

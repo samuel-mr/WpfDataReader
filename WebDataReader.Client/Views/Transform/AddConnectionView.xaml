@@ -1,41 +1,63 @@
-﻿<UserControl x:Class="WebDataReader.Client.Views.Transform.AddConnectionView"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:WebDataReader.Client.Views.Transform"
-             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-             xmlns:system="clr-namespace:System;assembly=mscorlib"
-             Background="{DynamicResource MaterialDesignPaper}"
-             TextElement.Foreground="{DynamicResource MaterialDesignBody}"
-             mc:Ignorable="d" Height="206.731" Width="526.923">
+﻿<UserControl
+    x:Class="WebDataReader.Client.Views.Transform.AddConnectionView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:WebDataReader.Client.Views.Transform"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:system="clr-namespace:System;assembly=mscorlib"
+    Width="526.923"
+    Height="206.731"
+    Background="{DynamicResource MaterialDesignPaper}"
+    TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+    mc:Ignorable="d">
     <Grid>
-        <TextBox Text="{Binding Name, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True}" 
-                 materialDesign:HintAssist.Hint="Name"
-                 Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
-                 Height="39" Margin="42,10,45,0" TextWrapping="NoWrap"  VerticalAlignment="Top" FontSize="14">
+        <TextBox
+            Height="39"
+            Margin="42,10,45,0"
+            VerticalAlignment="Top"
+            materialDesign:HintAssist.Hint="Name"
+            FontSize="14"
+            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+            Text="{Binding Name, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True}"
+            TextWrapping="NoWrap">
             <TextBox.InputBindings>
-                <KeyBinding Key="Enter" Command="{Binding AcceptCommand}"></KeyBinding>
+                <KeyBinding Key="Enter" Command="{Binding AcceptCommand}" />
             </TextBox.InputBindings>
         </TextBox>
-        <TextBox Text="{Binding Content, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True}" 
-                 materialDesign:HintAssist.Hint="String Connection"
-                 Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}"  AcceptsReturn="True" AcceptsTab="True" 
-                 Margin="29,63,10,47" TextWrapping="Wrap" FontSize="14">
+        <TextBox
+            Margin="29,63,10,47"
+            materialDesign:HintAssist.Hint="String Connection"
+            AcceptsReturn="True"
+            AcceptsTab="True"
+            FontSize="14"
+            Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}"
+            Text="{Binding Content, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True}"
+            TextWrapping="Wrap">
             <TextBox.InputBindings>
-                <KeyBinding Key="Enter" Command="{Binding AcceptCommand}"/>
+                <KeyBinding Key="Enter" Command="{Binding AcceptCommand}" />
             </TextBox.InputBindings>
         </TextBox>
-        <Button Content="Save"
-                Command="materialDesign:DialogHost.CloseDialogCommand"
-                HorizontalAlignment="Right" Margin="0,0,10,10" VerticalAlignment="Bottom" Width="75">
+        <Button
+            Width="75"
+            Margin="0,0,10,10"
+            HorizontalAlignment="Right"
+            VerticalAlignment="Bottom"
+            Command="materialDesign:DialogHost.CloseDialogCommand"
+            Content="Save">
             <Button.CommandParameter>
                 <system:Boolean>True</system:Boolean>
             </Button.CommandParameter>
         </Button>
-        <Button Content="x" 
-                Command="materialDesign:DialogHost.CloseDialogCommand"
-                HorizontalAlignment="Right" Margin="0,0,0,180" VerticalAlignment="Bottom" Width="45" Height="27">
+        <Button
+            Width="45"
+            Height="27"
+            Margin="0,0,0,180"
+            HorizontalAlignment="Right"
+            VerticalAlignment="Bottom"
+            Command="materialDesign:DialogHost.CloseDialogCommand"
+            Content="x">
             <Button.CommandParameter>
                 <system:Boolean>False</system:Boolean>
             </Button.CommandParameter>

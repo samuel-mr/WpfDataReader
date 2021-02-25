@@ -1,0 +1,3 @@
+﻿IsRequired => IsRequired? => solo si string && !isDbNull
+IsSizable => IsSIzable? => solo si string 
+NULL => false?OK::NULL=> Omite la linea

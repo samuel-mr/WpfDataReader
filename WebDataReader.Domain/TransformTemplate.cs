@@ -42,7 +42,7 @@ namespace WebDataReader.Domain
         foreach (var template in templateArray)
         {
           var resp = TransformLine(template, columnMetadata);
-          if (resp != null)
+          if (resp != null && resp != "NULL")
             sb.AppendLine(resp);
         }
       }
@@ -96,9 +96,12 @@ namespace WebDataReader.Domain
         // Si inicial con => IsRequired
         if (linetemplate.Substring(0, indexFirstQuestion).Trim() == "IsRequired")
         {
-
           return ExtractSingle_IsRequired(linetemplate, metadata);
-
+        }
+        // Si inicial con => IsSized
+        if (linetemplate.Substring(0, indexFirstQuestion).Trim() == "IsSizable")
+        {
+          return ExtractSingle_IsSizable(linetemplate, metadata);
         }
 
       }
@@ -126,6 +129,27 @@ namespace WebDataReader.Domain
       {
         return pares.primerValor;
       }
+    }
+
+    public string ExtractSingle_IsSizable(string linetemplate, ColumnMetadata metadata)
+    {
+      var tipoAdmitidos = new List<string>()
+      {
+        "string"
+      };
+      if (!tipoAdmitidos.Contains(metadata.DataType))
+        return null;
+
+      var indexFirstQuestion = linetemplate.IndexOf("?");
+
+      linetemplate = linetemplate.Substring(indexFirstQuestion + 1).Trim();
+
+      var pares = PartesEntreComillas(linetemplate);
+
+      if (metadata.DataType == "string")
+        if (metadata.ColumnSize < 2147483647) // Que no sea varchar(max)
+          return pares.primerValor.Replace("{{Size}}", metadata.ColumnSize.ToString());
+      return null;
     }
 
     (string primerValor, string segundoValor) PartesEntreComillas(string linetemplate)

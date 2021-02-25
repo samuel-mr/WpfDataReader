@@ -1,33 +1,49 @@
 ﻿<Window
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:WebDataReader.Client"
-        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        xmlns:Sunat="clr-namespace:WebDataReader.Client.Views.Sunat" 
-        xmlns:Transform="clr-namespace:WebDataReader.Client.Views.Transform" xmlns:Paginas="clr-namespace:WebDataReader.Client.Views.Paginas" x:Class="WebDataReader.Client.MainWindow"
-        FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto"
-        Background="{DynamicResource MaterialDesignPaper}"
-        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
-        TextElement.FontSize="12"
-        mc:Ignorable="d"
-        Title="Toolkit" Height="344" Width="596">
+    x:Class="WebDataReader.Client.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Paginas="clr-namespace:WebDataReader.Client.Views.Paginas"
+    xmlns:Sunat="clr-namespace:WebDataReader.Client.Views.Sunat"
+    xmlns:Transform="clr-namespace:WebDataReader.Client.Views.Transform"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:WebDataReader.Client"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="Toolkit"
+    Width="596"
+    Height="344"
+    Background="{DynamicResource MaterialDesignPaper}"
+    FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto"
+    TextElement.FontSize="12"
+    TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+    mc:Ignorable="d">
     <materialDesign:DialogHost Identifier="RootDialog" SnackbarMessageQueue="{Binding MessageQueue, ElementName=MainSnackbar}">
         <materialDesign:DrawerHost IsLeftDrawerOpen="{Binding IsChecked, ElementName=MenuToggleButton}">
             <Grid>
-                <TabControl TabStripPlacement="Left" Style="{DynamicResource TabControlStyle1}">
-                    <TabItem Header="Worker" FontSize="14" Style="{DynamicResource TabItemStyle1}">
-                        <Sunat:SunatWorkerView DataContext="{Binding SunatWorkerViewModel}"/>
+                <TabControl Style="{DynamicResource TabControlStyle1}" TabStripPlacement="Left">
+                    <TabItem
+                        FontSize="14"
+                        Header="Worker"
+                        Style="{DynamicResource TabItemStyle1}">
+                        <Sunat:SunatWorkerView DataContext="{Binding SunatWorkerViewModel}" />
                     </TabItem>
-                    <TabItem Header="Informacion" FontSize="14" Style="{DynamicResource TabItemStyle1}">
-                        <Sunat:SunatReportView DataContext="{Binding SunatReportViewModel}"/>
+                    <TabItem
+                        FontSize="14"
+                        Header="Informacion"
+                        Style="{DynamicResource TabItemStyle1}">
+                        <Sunat:SunatReportView DataContext="{Binding SunatReportViewModel}" />
                     </TabItem>
-                    <TabItem Header="Transformar" FontSize="14" Style="{DynamicResource TabItemStyle1}">
+                    <TabItem
+                        FontSize="14"
+                        Header="Transformar"
+                        Style="{DynamicResource TabItemStyle1}">
                         <Transform:TransformView DataContext="{Binding TransformViewModel}" />
                     </TabItem>
-                    <TabItem Header="Dominios" FontSize="14" Style="{DynamicResource TabItemStyle1}">
-                        <Paginas:ExtractDomainsView  DataContext="{Binding ExtractDomainsViewModel}"  />
+                    <TabItem
+                        FontSize="14"
+                        Header="Dominios"
+                        Style="{DynamicResource TabItemStyle1}">
+                        <Paginas:ExtractDomainsView DataContext="{Binding ExtractDomainsViewModel}" />
                     </TabItem>
                 </TabControl>
             </Grid>

@@ -1,29 +1,48 @@
-﻿<UserControl x:Class="WebDataReader.Client.Views.Paginas.ExtractDomainsView"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:WebDataReader.Client.Views.Paginas"
-             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-             mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+﻿<UserControl
+    x:Class="WebDataReader.Client.Views.Paginas.ExtractDomainsView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:WebDataReader.Client.Views.Paginas"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    mc:Ignorable="d">
     <Grid>
-        <TextBox Text="{Binding Url, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True}" 
-                 materialDesign:HintAssist.Hint="Mes"
-                 Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
-                 KeyUp="UIElement_OnKeyUp" Height="43" Margin="10,5,123,0" TextWrapping="Wrap"  VerticalAlignment="Top" FontSize="14">
+        <TextBox
+            Height="43"
+            Margin="10,5,123,0"
+            VerticalAlignment="Top"
+            materialDesign:HintAssist.Hint="Mes"
+            FontSize="14"
+            KeyUp="UIElement_OnKeyUp"
+            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+            Text="{Binding Url, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True}"
+            TextWrapping="Wrap">
             <TextBox.InputBindings>
-                <KeyBinding Key="Enter" Command="{Binding LoadCommand}"></KeyBinding>
+                <KeyBinding Key="Enter" Command="{Binding LoadCommand}" />
             </TextBox.InputBindings>
         </TextBox>
-        <Button  Command="{Binding LoadCommand}"  
-                 Click="ButtonBase_OnClick"
-                 HorizontalAlignment="Right" Margin="0,11,10,0" VerticalAlignment="Top" Width="108" Height="29">
-            <StackPanel Orientation="Horizontal" >
+        <Button
+            Width="108"
+            Height="29"
+            Margin="0,11,10,0"
+            HorizontalAlignment="Right"
+            VerticalAlignment="Top"
+            Click="ButtonBase_OnClick"
+            Command="{Binding LoadCommand}">
+            <StackPanel Orientation="Horizontal">
                 <TextBlock>Obtener</TextBlock>
-                <materialDesign:PackIcon Kind="Download" Height="24" Width="24" />
+                <materialDesign:PackIcon
+                    Width="24"
+                    Height="24"
+                    Kind="Download" />
             </StackPanel>
         </Button>
-        <TextBox  Margin="10,66,10,10" TextWrapping="Wrap" Text="{Binding Resultado,Mode=OneWay}"/>
+        <TextBox
+            Margin="10,66,10,10"
+            Text="{Binding Resultado, Mode=OneWay}"
+            TextWrapping="Wrap" />
     </Grid>
 </UserControl>
