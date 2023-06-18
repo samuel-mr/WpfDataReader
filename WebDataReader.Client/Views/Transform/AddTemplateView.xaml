@@ -32,7 +32,7 @@
             AcceptsReturn="True"
             AcceptsTab="True"
             FontSize="14"
-            Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}"
+            Style="{StaticResource MaterialDesignOutlinedTextBox}"
             Text="{Binding Content, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True}"
             TextWrapping="Wrap">
             <TextBox.InputBindings>
@@ -68,7 +68,7 @@
             materialDesign:HintAssist.Hint="Example"
             FontSize="14"
             Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-            Text="public {{Type}} {{Name}} { get; set; }"
+            Text="public {{type}} {{name}} { get; set; }"
             TextWrapping="NoWrap" IsReadOnly="True" Foreground="#DDA0A0A0">
         </TextBox>
     </Grid>

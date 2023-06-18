@@ -63,18 +63,18 @@ namespace WebDataReader.Domain
       if (metadata.AllowDbNull && metadata.DataType != "string")
       {
         linetemplate = linetemplate
-            .Replace("{{Type}}", $"{metadata.DataType}?")
+            .Replace("{{type}}", $"{metadata.DataType}?")
           ;
       }
       else
       {
         linetemplate = linetemplate
-            .Replace("{{Type}}", metadata.DataType)
+            .Replace("{{type}}", metadata.DataType)
           ;
       }
 
       linetemplate = linetemplate
-        .Replace("{{Name}}", metadata.ColumnName);
+        .Replace("{{name}}", metadata.ColumnName);
 
       linetemplate = ExtractSingle_Is(linetemplate, metadata);
       return linetemplate;

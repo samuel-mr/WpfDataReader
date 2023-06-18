@@ -30,7 +30,7 @@
             Height="71"
             Margin="29,132,0,0"
             HorizontalAlignment="Left"
-            ToolTip="Example : public {{Type}} {{Name}} { get; set; }"
+            ToolTip="Example : public {{type}} {{name}} { get; set; }"
             VerticalAlignment="Top"
             Command="{Binding TransformSunatCommand}">
             <StackPanel Orientation="Horizontal">
@@ -64,7 +64,7 @@
                 AcceptsReturn="True"
                 AcceptsTab="True"
                 FontSize="14"
-                Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}"
+                Style="{StaticResource MaterialDesignOutlinedTextBox}"
                 Text="{Binding Query, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True}"
                 TextWrapping="Wrap"
                 VerticalScrollBarVisibility="Auto" />
@@ -73,7 +73,7 @@
                 materialDesign:HintAssist.Hint="RESULT"
                 FontSize="14"
                 IsReadOnly="True"
-                Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}"
+                Style="{StaticResource MaterialDesignOutlinedTextBox}"
                 Text="{Binding Result, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True}"
                 TextWrapping="Wrap"
                 VerticalScrollBarVisibility="Auto" />

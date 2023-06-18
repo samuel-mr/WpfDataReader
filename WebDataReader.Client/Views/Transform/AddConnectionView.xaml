@@ -32,7 +32,7 @@
             AcceptsReturn="True"
             AcceptsTab="True"
             FontSize="14"
-            Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}"
+            Style="{StaticResource MaterialDesignOutlinedTextBox}"
             Text="{Binding Content, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True}"
             TextWrapping="Wrap">
             <TextBox.InputBindings>

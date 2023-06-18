@@ -20,7 +20,7 @@ namespace WebDataReader.Client.Views.Transform
     private readonly IImplementedConsumMetadata _implementedConsumMetadata;
     
       /*
-       Template = "public {{Type}} {{Name}} { get; set; }";
+       Template = "public {{type}} {{name}} { get; set; }";
         ConnectionString =
         @"Data Source=DESKTOP-901LI9F\SQL2017DEV;Initial Catalog=DemoCopia;User ID=sa;Password=Pa$$123";
        Query = @"SELECT TOP (1000) [UsuarioId]

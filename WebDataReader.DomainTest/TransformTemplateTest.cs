@@ -15,7 +15,7 @@ namespace WebDataReader.DomainTest
     [Fact]
     public void TransfornLine_SimpleTest()
     {
-      string template = "public {{Type}} {{Name}} { get; set; }";
+      string template = "public {{type}} {{name}} { get; set; }";
       var result = new TransformTemplate().TransformLine(template, new ColumnMetadata() { ColumnName = "Nombre", DataType = "String" });
       result.Should().Be(@"public String Nombre { get; set; }");
     }
@@ -23,14 +23,14 @@ namespace WebDataReader.DomainTest
     [Fact]
     public void Nullable_String_TransfornLine_SimpleTest()
     {
-      string template = "public {{Type}} {{Name}} { get; set; }";
+      string template = "public {{type}} {{name}} { get; set; }";
       var result = new TransformTemplate().TransformLine(template, new ColumnMetadata() { ColumnName = "Nombre", DataType = "String", AllowDbNull = true });
       result.Should().Be(@"public String Nombre { get; set; }");
     }
     [Fact]
     public void Nullable_int_TransfornLine_SimpleTest()
     {
-      string template = "public {{Type}} {{Name}} { get; set; }";
+      string template = "public {{type}} {{name}} { get; set; }";
       var result = new TransformTemplate().TransformLine(template, new ColumnMetadata() { ColumnName = "Nombre", DataType = "int", AllowDbNull = true });
       result.Should().Be(@"public int? Nombre { get; set; }");
     }
@@ -38,7 +38,7 @@ namespace WebDataReader.DomainTest
     [Fact]
     public void TransfornMultiple_SimpleTest()
     {
-      string template = "public {{Type}} {{Name}} { get; set; }";
+      string template = "public {{type}} {{name}} { get; set; }";
       var result = new TransformTemplate().Transform(template, new List<ColumnMetadata>() {
         new ColumnMetadata() { ColumnName  = "Nombre", DataType =  "string"},
         new ColumnMetadata() { ColumnName = "Cantidad", DataType =  "int"}
