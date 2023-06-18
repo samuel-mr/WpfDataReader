@@ -30,6 +30,7 @@
             Height="71"
             Margin="29,132,0,0"
             HorizontalAlignment="Left"
+            ToolTip="Example : public {{Type}} {{Name}} { get; set; }"
             VerticalAlignment="Top"
             Command="{Binding TransformSunatCommand}">
             <StackPanel Orientation="Horizontal">

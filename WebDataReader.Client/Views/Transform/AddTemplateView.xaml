@@ -27,7 +27,7 @@
             </TextBox.InputBindings>
         </TextBox>
         <TextBox
-            Margin="29,63,10,47"
+            Margin="29,115,10,47"
             materialDesign:HintAssist.Hint="Content"
             AcceptsReturn="True"
             AcceptsTab="True"
@@ -61,5 +61,15 @@
                 <system:Boolean>False</system:Boolean>
             </Button.CommandParameter>
         </Button>
+        <TextBox
+            Height="39"
+            Margin="40,71,48,0"
+            VerticalAlignment="Top"
+            materialDesign:HintAssist.Hint="Example"
+            FontSize="14"
+            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+            Text="public {{Type}} {{Name}} { get; set; }"
+            TextWrapping="NoWrap" IsReadOnly="True" Foreground="#DDA0A0A0">
+        </TextBox>
     </Grid>
 </UserControl>
