@@ -28,8 +28,8 @@
         <Button
             Width="120"
             Height="71"
-            Margin="0,95,10,0"
-            HorizontalAlignment="Right"
+            Margin="29,132,0,0"
+            HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Command="{Binding TransformSunatCommand}">
             <StackPanel Orientation="Horizontal">
@@ -41,18 +41,19 @@
             </StackPanel>
         </Button>
         <TextBox
-            Height="71"
-            Margin="29,95,135,0"
+            Height="151"
+            Margin="348,52,10,0"
             VerticalAlignment="Top"
             VerticalContentAlignment="Top"
             materialDesign:HintAssist.Hint="Plantilla"
             AcceptsReturn="True"
+            AcceptsTab="True"
             FontSize="14"
             Style="{StaticResource MaterialDesignFloatingHintTextBox}"
             Text="{Binding TemplateSelected.Plantilla, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True}"
             TextWrapping="Wrap"
             VerticalScrollBarVisibility="Auto" />
-        <Grid Margin="29,173,10,10">
+        <Grid Margin="29,216,10,10">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*" />
                 <ColumnDefinition Width="1*" />
@@ -64,7 +65,8 @@
                 FontSize="14"
                 Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}"
                 Text="{Binding Query, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True}"
-                TextWrapping="Wrap" />
+                TextWrapping="Wrap"
+                VerticalScrollBarVisibility="Auto" />
             <TextBox
                 Grid.Column="1"
                 materialDesign:HintAssist.Hint="RESULT"
@@ -72,7 +74,8 @@
                 IsReadOnly="True"
                 Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}"
                 Text="{Binding Result, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True}"
-                TextWrapping="Wrap" />
+                TextWrapping="Wrap"
+                VerticalScrollBarVisibility="Auto" />
             <Button
                 Grid.Column="1"
                 Width="49"
@@ -88,9 +91,9 @@
             </Button>
         </Grid>
         <ComboBox
-            Width="398"
+            Width="307"
             Height="43"
-            Margin="29,52,0,0"
+            Margin="29,76,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             materialDesign:HintAssist.Hint="Titulo"

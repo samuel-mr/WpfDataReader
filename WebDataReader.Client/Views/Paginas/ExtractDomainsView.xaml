@@ -42,6 +42,8 @@
         </Button>
         <TextBox
             Margin="10,66,10,10"
+            AcceptsReturn="True"
+            AcceptsTab="True"
             Text="{Binding Resultado, Mode=OneWay}"
             TextWrapping="Wrap" />
     </Grid>

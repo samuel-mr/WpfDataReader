@@ -8,7 +8,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:system="clr-namespace:System;assembly=mscorlib"
     Width="526.923"
-    Height="206.731"
+    Height="408.231"
     Background="{DynamicResource MaterialDesignPaper}"
     TextElement.Foreground="{DynamicResource MaterialDesignBody}"
     mc:Ignorable="d">
@@ -53,9 +53,8 @@
         <Button
             Width="45"
             Height="27"
-            Margin="0,0,0,180"
             HorizontalAlignment="Right"
-            VerticalAlignment="Bottom"
+            VerticalAlignment="Top"
             Command="materialDesign:DialogHost.CloseDialogCommand"
             Content="x">
             <Button.CommandParameter>
