@@ -68,7 +68,7 @@
             materialDesign:HintAssist.Hint="Example"
             FontSize="14"
             Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-            Text="public {{type}} {{name}} { get; set; }"
+            Text="{}{{type}}:string,int,DateTime  {{name}}:property   {{Name}}:Property"
             TextWrapping="NoWrap" IsReadOnly="True" Foreground="#DDA0A0A0">
         </TextBox>
     </Grid>
