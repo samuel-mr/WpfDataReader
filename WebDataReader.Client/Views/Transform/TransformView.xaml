@@ -13,7 +13,7 @@
     mc:Ignorable="d">
     <Grid>
         <TextBox
-            Height="39"
+            Height="47"
             Margin="29,5,230,0"
             VerticalAlignment="Top"
             materialDesign:HintAssist.Hint="Connection String"

@@ -6,6 +6,7 @@ using System.Collections.Specialized;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WebDataReader.Domain.Util;
 using WebDataReader.Domain.ValueObjects.Transform;
 
 namespace WebDataReader.Domain
@@ -75,6 +76,8 @@ namespace WebDataReader.Domain
 
       linetemplate = linetemplate
         .Replace("{{name}}", metadata.ColumnName);
+      linetemplate = linetemplate
+        .Replace("{{Name}}", metadata.ColumnName.FirstAsUpperCase());
 
       linetemplate = ExtractSingle_Is(linetemplate, metadata);
       return linetemplate;

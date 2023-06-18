@@ -48,6 +48,7 @@
     <Compile Include="DomainExtracter.cs" />
     <Compile Include="TransformTemplate.cs" />
     <Compile Include="Util\HtmlUtil.cs" />
+    <Compile Include="Util\StringHelpers.cs" />
     <Compile Include="ValueObjects\Transform\ColumnMetadata.cs" />
     <Compile Include="ValueObjects\WebReader\MyColumn.cs" />
     <Compile Include="ValueObjects\WebReader\MyHtml.cs" />
